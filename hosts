@@ -1,0 +1,2 @@
+[pve]
+pve1 ansible_host=*IP CLIENT* ansible_user=*ANSIBLE USER* ansible_ssh_privatre_key=*SSH KEY HOST*

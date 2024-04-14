@@ -1,0 +1,18 @@
+---
+# tasks file for nginx_installer
+ - name: Apt update
+   ansible.builtin.apt:
+      update_cache: yes
+
+ - name: Nginx install
+   ansible.builtin.apt:
+      name: nginx
+ - name: Delete default conf
+   ansible.builtin.file:
+      path: /etc/nginx/sites-enabled/default.conf
+      state: absent
+ - name: Generate new config
+   ansible.builtin.template:
+      src: proxmox.j2
+      dest: /etc/nginx/sites-enabled/proxmox.conf
+      mode: 0755
