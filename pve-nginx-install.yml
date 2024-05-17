@@ -1,5 +1,0 @@
-- name: PVE install + nginx install
-  hosts: pve
-  roles:
-        - proxmox_installer
-        - nginx_installer
