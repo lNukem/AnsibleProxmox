@@ -37,7 +37,7 @@
    vars:
     active_interface: "{{ lookup('vars', 'ansible_' ~ item).macaddress }}"
    with_items: "{{ansible_interfaces}}"
-   when: ansible_{{item}}.active == false
+   when: ansible_{{item}}.active == true
    notify:
     - System reboot
 
