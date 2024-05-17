@@ -1,0 +1,16 @@
+---
+- name: Restart nginx
+  ansible.builtin.service:
+    name: nginx
+    state: restarted
+
+- name: System reboot
+  reboot:
+
+- name: Register certbot email
+  shell: |
+   certbot register --register-unsafely-without-email
+   expect -exact "(Y)es/(N)o: "
+   send -- "Y"
+   
+  

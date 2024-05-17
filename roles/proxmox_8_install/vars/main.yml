@@ -1,0 +1,5 @@
+---
+# vars file for proxmox_8_install
+pve_dns_name: testnode
+
+active_interfaces: []

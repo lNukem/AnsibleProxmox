@@ -1,0 +1,12 @@
+---
+- name: Installation ssh
+  include_tasks: install_ssh.yml
+
+- name: Installation PVE
+  include_tasks: install_pve.yml
+
+- name: Installation Web-server
+  include_tasks: install_nginx.yml
+ 
+
+ 

@@ -1,0 +1,5 @@
+- name: Install Proxmox 8
+  become: yes
+  hosts: "{{ target_server_ip | default ('fail') }}"
+  roles:
+    - { role: 'roles/proxmox_8_install' }

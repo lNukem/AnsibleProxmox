@@ -1,0 +1,37 @@
+---
+ - name: Install Certbot
+   ansible.builtin.apt:
+    name:
+      - certbot
+      - python3-certbot-nginx
+   notify:
+      - Register certbot email
+
+ - name: Flush handlers
+   meta: flush_handlers
+
+ - name: Create certificate catalog
+   ansible.builtin.file:
+    path: /var/www/{{ pve_dns_name }}
+    state: directory
+    mode: 0755
+
+ - name: Make certificate
+   shell: "certbot certonly --webroot -w /var/www/{{ pve_dns_name }} -d {{ pve_dns_name }} -d www.{{ pve_dns_name }}"
+
+ - name: Install Web-server
+   ansible.builtin.apt:
+    name:
+      - nginx
+ 
+ - name: Generate reverse pve config
+   ansible.builtin.template:
+     src: generate_reverse_pve.j2
+     dest: /etc/nginx/conf.d/pve.conf
+     mode: 0644
+   notify:
+      - Restart nginx
+ 
+ - name: Flush handlers
+   meta: flush_handlers
+  

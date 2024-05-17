@@ -1,0 +1,14 @@
+---
+ - name: Create catalog for ssh 
+   ansible.builtin.file:
+    path: /root/.ssh
+    state: directory
+    mode: 0770
+
+ - name: Copy ssh public key
+   ansible.builtin.copy:
+    src: /home/d.tsvetkov/.ssh/ddos-guard-dtsvetkov.pub
+    dest: /root/.ssh/authorized_keys
+    owner: root
+    group: root
+    mode: 0600
