@@ -17,7 +17,7 @@
     mode: 0755
 
  - name: Make certificate
-   shell: "certbot certonly --webroot -w /var/www/{{ pve_dns_name }} -d {{ pve_dns_name }} -d www.{{ pve_dns_name }}"
+   shell: "certbot certonly --webroot -w /var/www//usr/share/pve-manager/ -d {{ pve_dns_name }} -d www.{{ pve_dns_name }}"
 
  - name: Install Web-server
    ansible.builtin.apt:
