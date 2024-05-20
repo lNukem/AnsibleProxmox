@@ -10,12 +10,6 @@
  - name: Flush handlers
    meta: flush_handlers
 
- - name: Create certificate catalog
-   ansible.builtin.file:
-    path: /var/www/{{ pve_dns_name }}
-    state: directory
-    mode: 0755
-
  - name: Make certificate
    shell: "certbot certonly --webroot -w /usr/share/pve-manager/ -d {{ pve_dns_name }} -d www.{{ pve_dns_name }}"
 
