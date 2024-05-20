@@ -5,10 +5,6 @@ server {
 
     server_name  {{ pve_dns_name }};
 
-    location /.well-known {
-    root /var/www/html;
-    }
-
     location / {
       return 301 https://{{ pve_dns_name }}$request_uri;
     }
@@ -20,10 +16,6 @@ server {
 
     ssl_certificate /etc/letsencrypt/live/{{ pve_dns_name }}/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/{{ pve_dns_name }}/privkey.pem;
- 
-    location /.well-known {
-    root /var/www/html;
-    }
 
     location / {
         proxy_pass http://{{ ansible_default_ipv4.address }}:8006;
